@@ -1,3 +1,11 @@
+Developing React skills through the creation of apps.
+
+Including:
+
+Todo List from https://www.youtube.com/watch?v=Rh3tobg7hEo
+with simple counter functionality
+
+##########################################################################################################################################################################
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
