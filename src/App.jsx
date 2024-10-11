@@ -3,6 +3,7 @@ import { NewTodoForm } from "./NewTodoForm"
 import { TodoList } from "./TodoList"
 import { Counter } from "./counter"
 import "./styles.css"
+import { AddDynamicInputFields } from "./AddDynamicInputFields"
 
 export default function App() {
 
@@ -60,11 +61,7 @@ export default function App() {
   <>
     <NewTodoForm onSubmit={addTodo}/>
     <h1 className="header">Todo List</h1>
-    
-    <TodoList todos={todos} 
-      toggleTodo={toggleTodo}  
-      deleteTodo={deleteTodo}
-    />
+    <AddDynamicInputFields />
     <h1 className="header">Counter</h1>
     <Counter 
       count={counter}
