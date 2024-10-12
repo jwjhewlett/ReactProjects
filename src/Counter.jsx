@@ -1,14 +1,12 @@
-import { useState } from "react"
 
-export function Counter({ count, modifyCounter }) {
+export function Counter({ counter, modifyCount }) {
 
   return (
     <>
-      {count} 
-      <br/>
-      <button onClick={() => modifyCounter(1)} className="btn" > Add 1 </button>
-      <br/>
-      <button onClick={() => modifyCounter(-count)} className="btn">Reset</button>        
+    {counter}
+    <br/>
+    <button onClick={() => modifyCount(1)} className="btn">Increase</button>{'   '}
+    <button onClick={() => modifyCount(-counter)} className="btn btn-danger">Reset</button>
     </>
   )
-} 
+}
