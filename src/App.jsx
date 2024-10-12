@@ -7,17 +7,30 @@ import "./styles.css"
 
 export default function App(){
 
-  const [count, setCount] = useState(() =>{
-    const localCountVal = localStorage.getItem("COUNT")
-    if (localCountVal == null) return 0
-    return JSON.parse(localCountVal)
-  })
+  // const [count, setCount] = useState(() =>{
+  //   const localCountVal = localStorage.getItem("COUNT")
+  //   if (localCountVal == null) return 0
+  //   return JSON.parse(localCountVal)
+  // })
 
-  function modifyCount(value) {
+  function OLDmodifyCount(value) {
     setCount(count => {
       const newCount = count + value
       localStorage.setItem("COUNT", JSON.stringify(newCount))
       return newCount
+    })
+  }
+
+
+  function modifyCount( id, value ){
+    setTodos(currentTodos => {
+      return currentTodos.map(todo => {
+        if (todo.id === id) {
+          const count = todo.count + value
+          return { ...todo, count }
+        }
+        return todo
+      })
     })
   }
 
@@ -36,12 +49,12 @@ export default function App(){
     setTodos((currentTodos) => {
       return [
         ...currentTodos,
-        { id: crypto.randomUUID(), title: title, completed: false  }, 
+        { id: crypto.randomUUID(), title: title, completed: false, count: 0  }, 
       ]
     })
   }
 
-  function toggleTodo( id, completed ){
+  function toggleChecked( id, completed ){
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
         if (todo.id === id) {
@@ -63,9 +76,7 @@ export default function App(){
     <>
     <NewTodoForm onSubmit={addTodo} />
     <h1 className="header">Todo List</h1>
-    <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />  
-    <h1 className="header">Counter</h1>
-    <Counter counter={count} modifyCount={modifyCount} />
+    <TodoList todos={todos} toggleTodo={toggleChecked} deleteTodo={deleteTodo} modifyCount={modifyCount} />  
     </>
   )
 }
